@@ -242,4 +242,4 @@ This project is open source and available under the [MIT License](LICENSE).
 ![Light Mode](./src/assets/demo.jpg)
 
 ### Dark Mode
-![Dark Mode](./src/assets/demo%20(2).jpg)
+![Dark Mode](./src/assets/demo(2).jpg)
