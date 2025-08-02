@@ -238,8 +238,9 @@ This project is open source and available under the [MIT License](LICENSE).
 >>>>>>> 8bd252c8f59f2f296a34def70231109a398e6b1b
 ## 🖼 Demo Screenshots
 
-### Light Mode
-![Light Mode](./src/assets/demo.jpg)
+<!-- ### Light Mode -->
 
-### Dark Mode
-![Dark Mode](./src/assets/demo(2).jpg)
+
+![ScreenShot - 1](./src/assets/demo(2).jpg)
+
+![ScreenShot - 2](./src/assets/demo.jpg)
