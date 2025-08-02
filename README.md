@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 💰 Personal Finance Tracker
 
 A modern, responsive web application built with React and Tailwind CSS for tracking personal income and expenses with advanced data visualization and analytics.
@@ -232,3 +233,9 @@ This project is open source and available under the [MIT License](LICENSE).
 **Built with ❤️ for internship showcase**
 
 *This project demonstrates modern web development skills including React, data visualization, responsive design, and user experience optimization.*
+=======
+# Personal-Finance-Tracker
+>>>>>>> 8bd252c8f59f2f296a34def70231109a398e6b1b
+## 🖼 Demo
+
+![App Screenshot](.\assets\demo.jpg)
