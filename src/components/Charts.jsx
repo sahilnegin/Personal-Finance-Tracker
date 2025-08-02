@@ -17,7 +17,6 @@ import {
 } from 'recharts';
 
 const Charts = ({ transactions }) => {
-  // Calculate category distribution for pie chart
   const getCategoryData = () => {
     const categoryTotals = {};
     
@@ -33,7 +32,6 @@ const Charts = ({ transactions }) => {
     }));
   };
 
-  // Calculate monthly data for bar chart
   const getMonthlyData = () => {
     const monthlyData = {};
     
@@ -60,7 +58,6 @@ const Charts = ({ transactions }) => {
     }));
   };
 
-  // Calculate spending trends for line chart
   const getSpendingTrends = () => {
     const dailyData = {};
     
@@ -77,10 +74,9 @@ const Charts = ({ transactions }) => {
         spending: amount
       }))
       .sort((a, b) => new Date(a.date) - new Date(b.date))
-      .slice(-30); // Last 30 days
+      .slice(-30);
   };
 
-  // Color palette for charts
   const COLORS = [
     '#3B82F6', '#10B981', '#F59E0B', '#EF4444', 
     '#8B5CF6', '#EC4899', '#06B6D4', '#84CC16',
@@ -91,7 +87,6 @@ const Charts = ({ transactions }) => {
   const monthlyData = getMonthlyData();
   const spendingTrends = getSpendingTrends();
 
-  // Custom tooltip for pie chart
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
@@ -109,7 +104,6 @@ const Charts = ({ transactions }) => {
     return null;
   };
 
-  // Custom tooltip for bar/line charts
   const CustomChartTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
@@ -146,7 +140,6 @@ const Charts = ({ transactions }) => {
 
   return (
     <div className="space-y-6">
-      {/* Category Distribution Pie Chart */}
       {categoryData.length > 0 && (
         <div className="card">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
@@ -176,7 +169,6 @@ const Charts = ({ transactions }) => {
         </div>
       )}
 
-      {/* Monthly Income vs Expenses Bar Chart */}
       {monthlyData.length > 0 && (
         <div className="card">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
@@ -206,7 +198,6 @@ const Charts = ({ transactions }) => {
         </div>
       )}
 
-      {/* Spending Trends Line Chart */}
       {spendingTrends.length > 0 && (
         <div className="card">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">

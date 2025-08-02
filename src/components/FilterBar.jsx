@@ -30,7 +30,6 @@ const FilterBar = ({ filter, setFilter }) => {
 
   return (
     <div className="flex flex-col sm:flex-row gap-3 mb-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-      {/* Type Filter */}
       <div className="flex-1">
         <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
           Filter by Type
@@ -52,7 +51,6 @@ const FilterBar = ({ filter, setFilter }) => {
         </div>
       </div>
 
-      {/* Category Filter */}
       <div className="flex-1">
         <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
           Filter by Category
@@ -70,7 +68,6 @@ const FilterBar = ({ filter, setFilter }) => {
         </select>
       </div>
 
-      {/* Clear Filters */}
       {(filter.category !== 'all' || filter.type !== 'all') && (
         <div className="flex items-end">
           <button

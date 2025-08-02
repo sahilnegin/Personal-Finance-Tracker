@@ -43,10 +43,8 @@ const SummaryCard = ({ title, amount, type, className = '' }) => {
 
   return (
     <div className={`relative overflow-hidden rounded-xl p-4 text-white ${className}`}>
-      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-black/20"></div>
       
-      {/* Content */}
       <div className="relative z-10">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center justify-center w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl">
@@ -70,11 +68,9 @@ const SummaryCard = ({ title, amount, type, className = '' }) => {
         </div>
       </div>
       
-      {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-12 translate-x-12"></div>
       <div className="absolute bottom-0 left-0 w-16 h-16 bg-white/5 rounded-full translate-y-8 -translate-x-8"></div>
       
-      {/* Subtle border gradient */}
       <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/10 to-transparent opacity-50"></div>
     </div>
   );

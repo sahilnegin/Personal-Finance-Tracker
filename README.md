@@ -236,10 +236,10 @@ This project is open source and available under the [MIT License](LICENSE).
 =======
 # Personal-Finance-Tracker
 >>>>>>> 8bd252c8f59f2f296a34def70231109a398e6b1b
-## 🖼 Demo
+## 🖼 Demo Screenshots
 
-<img src="./src/assets/demo.jpg" alt="App Screenshot" width="100%" />
+### Light Mode
+![Light Mode](./src/assets/demo.jpg)
 
-## 🖼 Demo
-
-<img src="./src/assets/demo(2).jpg" alt="App Screenshot" width="100%" />
+### Dark Mode
+![Dark Mode](./src/assets/demo%20(2).jpg)

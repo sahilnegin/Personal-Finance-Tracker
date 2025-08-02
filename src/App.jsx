@@ -12,7 +12,6 @@ function App() {
   const [filter, setFilter] = useState({ category: 'all', type: 'all' });
   const [darkMode, setDarkMode] = useState(false);
 
-  // Sample data for demo purposes
   const sampleTransactions = [
     {
       id: 1,
@@ -80,7 +79,6 @@ function App() {
     }
   ];
 
-  // Load data from localStorage on component mount
   useEffect(() => {
     const savedTransactions = localStorage.getItem('transactions');
     const savedDarkMode = localStorage.getItem('darkMode');
@@ -88,7 +86,6 @@ function App() {
     if (savedTransactions) {
       setTransactions(JSON.parse(savedTransactions));
     } else {
-      // Load sample data if no saved data exists
       setTransactions(sampleTransactions);
     }
     
@@ -97,12 +94,10 @@ function App() {
     }
   }, []);
 
-  // Save transactions to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('transactions', JSON.stringify(transactions));
   }, [transactions]);
 
-  // Save dark mode preference to localStorage
   useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
     if (darkMode) {
@@ -144,7 +139,6 @@ function App() {
   return (
     <div className={`min-h-screen transition-colors duration-200 ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
       <div className="container mx-auto px-4 py-6">
-        {/* Compact Header */}
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center space-x-3">
             <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl shadow-lg">
@@ -162,7 +156,6 @@ function App() {
           <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
         </div>
 
-        {/* Compact Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <SummaryCard 
             title="Total Balance" 
@@ -185,7 +178,6 @@ function App() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-          {/* Add Transaction Form */}
           <div className="lg:col-span-1">
             <div className="card">
               <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
@@ -195,7 +187,6 @@ function App() {
             </div>
           </div>
 
-          {/* Transaction List */}
           <div className="lg:col-span-2">
             <div className="card">
               <div className="flex justify-between items-center mb-4">
@@ -217,7 +208,6 @@ function App() {
           </div>
         </div>
 
-        {/* Charts Section */}
         <div className="mb-6">
           <div className="card">
             <div className="flex items-center justify-between mb-6">

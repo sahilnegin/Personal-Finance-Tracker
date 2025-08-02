@@ -33,7 +33,6 @@ const AddTransactionForm = ({ onAddTransaction }) => {
       type: formData.type
     });
 
-    // Reset form
     setFormData({
       title: '',
       amount: '',
@@ -52,7 +51,6 @@ const AddTransactionForm = ({ onAddTransaction }) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {/* Title Input */}
       <div>
         <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           Title
@@ -69,7 +67,6 @@ const AddTransactionForm = ({ onAddTransaction }) => {
         />
       </div>
 
-      {/* Amount Input */}
       <div>
         <label htmlFor="amount" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           Amount
@@ -88,7 +85,6 @@ const AddTransactionForm = ({ onAddTransaction }) => {
         />
       </div>
 
-      {/* Type Selection */}
       <div>
         <label htmlFor="type" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           Type
@@ -106,7 +102,6 @@ const AddTransactionForm = ({ onAddTransaction }) => {
         </select>
       </div>
 
-      {/* Category Selection */}
       <div>
         <label htmlFor="category" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           Category
@@ -128,7 +123,6 @@ const AddTransactionForm = ({ onAddTransaction }) => {
         </select>
       </div>
 
-      {/* Submit Button */}
       <button
         type="submit"
         className="btn-primary w-full"
