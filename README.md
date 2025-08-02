@@ -238,4 +238,6 @@ This project is open source and available under the [MIT License](LICENSE).
 >>>>>>> 8bd252c8f59f2f296a34def70231109a398e6b1b
 ## 🖼 Demo
 
-![App Screenshot](.\assets\demo.jpg)
+## 🖼 Demo
+
+<img src="./src/assets/demo.jpg" alt="App Screenshot" width="100%" />
