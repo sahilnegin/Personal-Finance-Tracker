@@ -95,11 +95,11 @@ const TransactionList = ({ transactions, onDeleteTransaction }) => {
     <div className="space-y-4">
       {transactions.map((transaction) => (
         <div
-          key={transaction.id}
+          key={transaction._id}
           className={`group relative bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 transition-all duration-300 hover:shadow-lg hover:border-gray-300 dark:hover:border-gray-600 ${
-            hoveredId === transaction.id ? 'shadow-lg border-blue-200 dark:border-blue-700' : ''
+            hoveredId === transaction._id ? 'shadow-lg border-blue-200 dark:border-blue-700' : ''
           }`}
-          onMouseEnter={() => setHoveredId(transaction.id)}
+          onMouseEnter={() => setHoveredId(transaction._id)}
           onMouseLeave={() => setHoveredId(null)}
         >
           <div className="flex items-center justify-between">
@@ -139,7 +139,7 @@ const TransactionList = ({ transactions, onDeleteTransaction }) => {
               </div>
               
               <button
-                onClick={() => onDeleteTransaction(transaction.id)}
+                onClick={() => onDeleteTransaction(transaction._id)}
                 className="opacity-0 group-hover:opacity-100 p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all duration-200"
                 title="Delete transaction"
               >

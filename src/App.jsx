@@ -6,97 +6,39 @@ import SummaryCard from './components/SummaryCard';
 import FilterBar from './components/FilterBar';
 import ThemeToggle from './components/ThemeToggle';
 import Charts from './components/Charts';
+import { api } from './services/api';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
   const [filter, setFilter] = useState({ category: 'all', type: 'all' });
   const [darkMode, setDarkMode] = useState(false);
-
-  const sampleTransactions = [
-    {
-      id: 1,
-      title: 'Salary',
-      amount: 5000,
-      category: 'Salary',
-      type: 'income',
-      date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
-    },
-    {
-      id: 2,
-      title: 'Freelance Project',
-      amount: 1200,
-      category: 'Freelance',
-      type: 'income',
-      date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString()
-    },
-    {
-      id: 3,
-      title: 'Grocery Shopping',
-      amount: 150,
-      category: 'Food',
-      type: 'expense',
-      date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString()
-    },
-    {
-      id: 4,
-      title: 'Gas Station',
-      amount: 45,
-      category: 'Transportation',
-      type: 'expense',
-      date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString()
-    },
-    {
-      id: 5,
-      title: 'Netflix Subscription',
-      amount: 15,
-      category: 'Entertainment',
-      type: 'expense',
-      date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString()
-    },
-    {
-      id: 6,
-      title: 'Electric Bill',
-      amount: 120,
-      category: 'Bills',
-      type: 'expense',
-      date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString()
-    },
-    {
-      id: 7,
-      title: 'Investment Dividend',
-      amount: 300,
-      category: 'Investment',
-      type: 'income',
-      date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString()
-    },
-    {
-      id: 8,
-      title: 'Restaurant Dinner',
-      amount: 85,
-      category: 'Food',
-      type: 'expense',
-      date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString()
-    }
-  ];
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const savedTransactions = localStorage.getItem('transactions');
+    const fetchTransactions = async () => {
+      try {
+        setLoading(true);
+        const data = await api.getTransactions();
+        setTransactions(data);
+        setError(null);
+      } catch (err) {
+        setError('Failed to load transactions');
+        console.error('Error fetching transactions:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     const savedDarkMode = localStorage.getItem('darkMode');
-    
-    if (savedTransactions) {
-      setTransactions(JSON.parse(savedTransactions));
-    } else {
-      setTransactions(sampleTransactions);
-    }
-    
     if (savedDarkMode) {
       setDarkMode(JSON.parse(savedDarkMode));
     }
+
+    fetchTransactions();
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('transactions', JSON.stringify(transactions));
-  }, [transactions]);
+
 
   useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
@@ -107,17 +49,24 @@ function App() {
     }
   }, [darkMode]);
 
-  const addTransaction = (transaction) => {
-    const newTransaction = {
-      ...transaction,
-      id: Date.now(),
-      date: new Date().toISOString()
-    };
-    setTransactions([newTransaction, ...transactions]);
+  const addTransaction = async (transaction) => {
+    try {
+      const newTransaction = await api.createTransaction(transaction);
+      setTransactions([newTransaction, ...transactions]);
+    } catch (err) {
+      setError('Failed to add transaction');
+      console.error('Error adding transaction:', err);
+    }
   };
 
-  const deleteTransaction = (id) => {
-    setTransactions(transactions.filter(transaction => transaction.id !== id));
+  const deleteTransaction = async (id) => {
+    try {
+      await api.deleteTransaction(id);
+      setTransactions(transactions.filter(transaction => transaction._id !== id));
+    } catch (err) {
+      setError('Failed to delete transaction');
+      console.error('Error deleting transaction:', err);
+    }
   };
 
   const filteredTransactions = transactions.filter(transaction => {
@@ -125,6 +74,33 @@ function App() {
     const typeMatch = filter.type === 'all' || transaction.type === filter.type;
     return categoryMatch && typeMatch;
   });
+
+  if (loading) {
+    return (
+      <div className={`min-h-screen flex items-center justify-center ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className={`text-lg ${darkMode ? 'text-white' : 'text-gray-700'}`}>Loading transactions...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={`min-h-screen flex items-center justify-center ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
+        <div className="text-center">
+          <p className={`text-lg text-red-600 mb-4`}>{error}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   const totalIncome = transactions
     .filter(transaction => transaction.type === 'income')

@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 # 💰 Personal Finance Tracker
 
-A modern, responsive web application built with React and Tailwind CSS for tracking personal income and expenses with advanced data visualization and analytics.
+A full-stack React application with Node.js/Express backend and MongoDB database for tracking personal income and expenses with beautiful UI and analytics.
 
 ![Personal Finance Tracker](https://img.shields.io/badge/React-19.1.0-blue?style=for-the-badge&logo=react)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1.11-38B2AC?style=for-the-badge&logo=tailwind-css)
@@ -15,7 +14,7 @@ A modern, responsive web application built with React and Tailwind CSS for track
 - **Transaction Management**: View all transactions in a clean, organized list with delete functionality
 - **Real-time Balance**: Dynamic calculation of total balance, income, and expenses
 - **Smart Filtering**: Filter transactions by category or type (income/expense)
-- **Data Persistence**: All data is saved to localStorage and persists between sessions
+- **Database Persistence**: All data is saved to MongoDB database with full CRUD operations
 
 ### 🎨 **User Experience**
 - **Dark/Light Mode**: Beautiful theme toggle with smooth transitions
@@ -42,6 +41,14 @@ A modern, responsive web application built with React and Tailwind CSS for track
 - **Vite** - Fast build tool and development server
 - **Lucide React** - Beautiful, customizable icons
 
+### **Backend**
+- **Node.js** - JavaScript runtime environment
+- **Express.js** - Web application framework
+- **MongoDB** - NoSQL database
+- **Mongoose** - MongoDB object modeling
+- **Helmet** - Security middleware
+- **CORS** - Cross-origin resource sharing
+
 ### **Data Visualization**
 - **Recharts** - Composable charting library built on React components
 - **Responsive Charts** - Charts that adapt to different screen sizes
@@ -50,34 +57,63 @@ A modern, responsive web application built with React and Tailwind CSS for track
 ### **Development Tools**
 - **ESLint** - Code linting and quality assurance
 - **Git** - Version control
-- **localStorage** - Client-side data persistence
+- **RESTful API** - Backend communication
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js (version 16 or higher)
 - npm or yarn package manager
+- MongoDB (local installation or MongoDB Atlas)
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd personal_finance_tracker
+   cd Personal-Finance-Tracker
    ```
 
-2. **Install dependencies**
+2. **Setup Backend**
    ```bash
+   cd backend
    npm install
    ```
 
-3. **Start the development server**
+3. **Setup Frontend**
+   ```bash
+   cd ..
+   npm install
+   ```
+
+4. **Configure Environment**
+   - Copy `backend/config.env` to `backend/.env`
+   - Update MongoDB connection string if needed
+
+5. **Start MongoDB**
+   - Start your local MongoDB service
+   - Or use MongoDB Atlas cloud database
+
+6. **Seed Database (Optional)**
+   ```bash
+   cd backend
+   node seed.js
+   ```
+
+7. **Start Backend Server**
+   ```bash
+   cd backend
+   npm run dev
+   ```
+
+8. **Start Frontend Development Server**
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
-   Navigate to `http://localhost:5173`
+9. **Open your browser**
+   - Frontend: `http://localhost:5173`
+   - Backend API: `http://localhost:5000`
 
 ### Build for Production
 ```bash
@@ -92,24 +128,38 @@ npm run preview
 ## 📁 Project Structure
 
 ```
-personal_finance_tracker/
-├── src/
-│   ├── components/
+Personal-Finance-Tracker/
+├── src/                    # Frontend React code
+│   ├── components/         # React components
 │   │   ├── AddTransactionForm.jsx    # Form for adding new transactions
 │   │   ├── TransactionList.jsx       # Display and manage transactions
 │   │   ├── SummaryCard.jsx          # Balance, income, and expense cards
 │   │   ├── FilterBar.jsx            # Filter transactions by category/type
 │   │   ├── ThemeToggle.jsx          # Dark/light mode toggle
 │   │   └── Charts.jsx               # Data visualization components
-│   ├── App.jsx                      # Main application component
-│   ├── main.jsx                     # Application entry point
-│   └── index.css                    # Tailwind CSS imports and custom styles
-├── public/
-├── index.html                       # HTML template
-├── tailwind.config.js              # Tailwind CSS configuration
-├── vite.config.js                  # Vite configuration
-├── package.json                    # Dependencies and scripts
-└── README.md                       # Project documentation
+│   ├── services/          # API service layer
+│   │   └── api.js         # Backend API communication
+│   ├── App.jsx            # Main application component
+│   ├── main.jsx           # Application entry point
+│   └── index.css          # Tailwind CSS imports and custom styles
+├── backend/               # Backend Node.js code
+│   ├── models/            # MongoDB models
+│   │   └── Transaction.js # Transaction schema
+│   ├── routes/            # API routes
+│   │   └── transactions.js # Transaction endpoints
+│   ├── middleware/        # Express middleware
+│   │   └── errorHandler.js # Error handling
+│   ├── config/            # Configuration files
+│   │   └── db.js          # Database connection
+│   ├── server.js          # Main server file
+│   ├── seed.js            # Database seeding script
+│   └── package.json       # Backend dependencies
+├── public/                # Static assets
+├── index.html             # HTML template
+├── tailwind.config.js     # Tailwind CSS configuration
+├── vite.config.js         # Vite configuration
+├── package.json           # Frontend dependencies and scripts
+└── README.md              # Project documentation
 ```
 
 ## 🎨 Features in Detail
@@ -121,11 +171,11 @@ personal_finance_tracker/
 - Flexible grid layouts that adapt to content
 
 ### **Data Management**
-- Automatic localStorage synchronization
+- RESTful API communication with backend
 - Real-time balance calculations
 - Transaction filtering and sorting
-- Data persistence across browser sessions
-- Sample data for immediate demonstration
+- MongoDB database persistence
+- Sample data seeding for immediate demonstration
 
 ### **Chart Analytics**
 - **Pie Chart**: Shows expense distribution by category with percentages
@@ -233,9 +283,7 @@ This project is open source and available under the [MIT License](LICENSE).
 **Built with ❤️ for internship showcase**
 
 *This project demonstrates modern web development skills including React, data visualization, responsive design, and user experience optimization.*
-=======
-# Personal-Finance-Tracker
->>>>>>> 8bd252c8f59f2f296a34def70231109a398e6b1b
+
 ## 🖼 Demo Screenshots
 
 <!-- ### Light Mode -->

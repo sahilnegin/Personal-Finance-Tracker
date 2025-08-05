@@ -7,13 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start-full": "node start-dev.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "lucide-react": "^0.536.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "recharts": "^3.1.1",
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
